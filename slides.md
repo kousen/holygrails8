@@ -367,7 +367,7 @@ Grails does not ship:
 implementation "org.apache.groovy:groovy-datetime"   // version from the Groovy BOM
 ```
 
-You get `date - date`, `date + 1`, `date.format('MMM d')`, and date ranges back.
+You get `endDate - startDate`, `today + 1`, `date.format('MMM d')`, and date ranges back.
 
 ---
 
@@ -1025,7 +1025,7 @@ A compiled JSON view that declared `Integer questCount` on 7 fails at runtime on
 <div class="pt-4" />
 
 **`groovy-datetime` is not on the classpath.**
-Any `date - date` from older code fails until you add one dependency line.
+Any `endDate - startDate` from older code fails until you add one dependency line.
 
 ---
 
