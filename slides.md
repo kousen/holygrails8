@@ -517,8 +517,29 @@ classDiagram
 `Task` and `Enemy` use `belongsTo`; `Knight` holds plain references, because knights wander.
 
 ---
+layout: center
+class: text-center
+---
 
 # The Bridge of Death
+
+<div class="flex justify-center my-4">
+  <Youtube id="0D7hFHfLEyk" :width="640" :height="360" />
+</div>
+
+<div class="text-sm opacity-70">
+"What... is your favourite colour?" "Blue. No, yel—" <em>aaaargh</em><br>
+<a href="https://www.youtube.com/watch?v=0D7hFHfLEyk" target="_blank">youtube.com/watch?v=0D7hFHfLEyk</a>
+</div>
+
+<!--
+CLIP, 30 seconds: scrub to Lancelot ("Ask me the questions, bridgekeeper") and stop when Sir Robin goes over the edge. The validator on the next slide is the payoff, so this is the one clip to keep if time is short.
+Needs wifi. The PDF shows the link instead of the player. Alternate upload if this one disappears: dPOyOM7wxlE.
+-->
+
+---
+
+# The Bridge of Death, as a validator
 
 "What... is your favourite colour?" "Blue. No, yel—" *aaaargh*
 
@@ -791,6 +812,27 @@ This is THE thing to tell anyone upgrading. Command objects are unaffected. Revi
 -->
 
 ---
+layout: center
+class: text-center
+---
+
+# 'Tis but a scratch
+
+<div class="flex justify-center my-4">
+  <Youtube id="KlYrn2bXsc4" :width="640" :height="360" />
+</div>
+
+<div class="text-sm opacity-70">
+Four changes to port this app to 8. Everything else: a flesh wound.<br>
+<a href="https://www.youtube.com/watch?v=KlYrn2bXsc4" target="_blank">youtube.com/watch?v=KlYrn2bXsc4</a>
+</div>
+
+<!--
+CLIP, 20 seconds: from "None shall pass" to "'Tis but a scratch". Official Monty Python channel upload.
+First clip to drop under time pressure: the next slide stands on its own.
+-->
+
+---
 
 # Porting this app: four changes
 
@@ -948,6 +990,27 @@ layout: section
 # Lessons from building this
 
 ---
+layout: center
+class: text-center
+---
+
+# The Rabbit of Caerbannog
+
+<div class="flex justify-center my-4">
+  <Youtube id="XcxKIJTb3Hg" :width="640" :height="360" />
+</div>
+
+<div class="text-sm opacity-70">
+"That's no ordinary rabbit." Two things that bit me this week, next slide.<br>
+<a href="https://www.youtube.com/watch?v=XcxKIJTb3Hg" target="_blank">youtube.com/watch?v=XcxKIJTb3Hg</a>
+</div>
+
+<!--
+CLIP, 20 seconds: Tim's warning through the first charge ("Run away!"), which also sets up the closing slide.
+Alternate: the Holy Hand Grenade, xOrgLj9lOwk, if the point is the fix rather than the bite. Second clip to drop under time pressure.
+-->
+
+---
 
 # Two things that will bite you
 
@@ -988,6 +1051,27 @@ SiteMesh 3 layout, new welcome page, regenerated i18n, no `logback-spring.xml`, 
 And three things that turned out to be rumours: there is no SBOM feature, the console is not dead (it moved to a `-cli` jar), and Hibernate did not move by default.
 
 </div>
+
+---
+layout: center
+class: text-center
+---
+
+# A mandate from the masses
+
+<div class="flex justify-center my-4">
+  <Youtube id="44S0sa6gWMM" :width="640" :height="360" />
+</div>
+
+<div class="text-sm opacity-70">
+"Strange women lying in ponds distributing swords is no basis for a system of government."<br>
+<a href="https://www.youtube.com/watch?v=44S0sa6gWMM" target="_blank">youtube.com/watch?v=44S0sa6gWMM</a>
+</div>
+
+<!--
+CLIP, 30 seconds: from "Well, I didn't vote for you" to "farcical aquatic ceremony". BritBox upload.
+The bridge into the three issues: at an Apache conference, supreme executive power really does derive from a mandate from the masses. Say that, then next slide.
+-->
 
 ---
 
