@@ -2,7 +2,7 @@ import com.kousenit.Quest
 
 model {
     List<Quest> questList
-    Integer questCount
+    Number questCount   // Grails 7 supplies an Integer here, Grails 8 a Long
 }
 
 json {

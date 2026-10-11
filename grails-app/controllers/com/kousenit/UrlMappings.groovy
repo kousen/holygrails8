@@ -11,6 +11,8 @@ class UrlMappings {
 
         "/api/quests"(resources: "questApi")
         "/"(view:"/index")
+        // Browsers request /favicon.ico for pages that declare no icon of their own
+        "/favicon.ico"(redirect: [uri: '/assets/favicon.ico', permanent: true])
         "500"(view:'/error')
         "404"(view:'/notFound')
 

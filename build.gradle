@@ -47,11 +47,11 @@ dependencies {
     implementation "org.apache.grails:grails-events"
     implementation "org.apache.grails:grails-gsp"
     implementation "org.apache.grails:grails-interceptors"
-    implementation "org.apache.grails:grails-layout"
     implementation "org.apache.grails:grails-logging"
     implementation "org.apache.grails:grails-rest-transforms"
     implementation "org.apache.grails:grails-scaffolding"
     implementation "org.apache.grails:grails-services"
+    implementation "org.apache.grails:grails-sitemesh3"
     implementation "org.apache.grails:grails-url-mappings"
     implementation "org.apache.grails:grails-web-boot"
     implementation "org.apache.grails:grails-views-gson"
@@ -61,12 +61,11 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-logging"
     implementation "org.springframework.boot:spring-boot-starter-tomcat"
     implementation "org.springframework.boot:spring-boot-starter-validation"
-    console "org.apache.grails:grails-console"
+    implementation "org.springframework.boot:spring-boot-tomcat"
     runtimeOnly "cloud.wondrify:asset-pipeline-grails"
     runtimeOnly "com.h2database:h2"
     runtimeOnly "org.webjars.npm:leaflet:1.9.4"
     runtimeOnly "com.zaxxer:HikariCP"
-    runtimeOnly "org.fusesource.jansi:jansi"
     integrationTestImplementation testFixtures("org.apache.grails:grails-geb")
     integrationTestImplementation "org.seleniumhq.selenium:selenium-firefox-driver"
     integrationTestImplementation "org.apache.grails:grails-testing-support-http-client"
@@ -75,11 +74,11 @@ dependencies {
     testImplementation "org.apache.grails:grails-testing-support-web"
     testImplementation "org.mockito:mockito-core"
     testImplementation "org.spockframework:spock-core"
-    testImplementation "org.testcontainers:spock"
     testImplementation "org.testcontainers:testcontainers"
+    testImplementation "org.testcontainers:testcontainers-spock"
 }
 
-compileJava.options.release = 17
+compileJava.options.release = 21
 
 tasks.withType(Test).configureEach {
     useJUnitPlatform()
@@ -100,10 +99,3 @@ assets {
     ]
 }
 
-
-// Grails 7.2.4's buildProperties task captures the Project object, which the
-// Gradle configuration cache cannot serialize. Opt the task out so the build
-// works even when ~/.gradle/gradle.properties enables the cache.
-tasks.matching { it.name == 'buildProperties' }.configureEach {
-    notCompatibleWithConfigurationCache('Grails 7.2.4 buildProperties references Project')
-}

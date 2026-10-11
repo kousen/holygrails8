@@ -21,13 +21,22 @@ A complete [Apache Grails 7](https://grails.apache.org) application built in sta
 
 `main` is the finished application. To see a stage, `git checkout <tag>`.
 
-## Grails 8
+## This branch: Grails 8.0.0-RC2
 
-The `holygrails8` branch is the same application on Grails 8.0.0-RC2, Gradle 9.8 and JDK 25. Its README lists what the port touched; the headline is that Grails 8 makes unconstrained domain properties nullable by default.
+This is the `holygrails8` branch: the same application on **Grails 8.0.0-RC2**, Groovy 5.1, Spring Boot 4.1, Gradle 9.8 and JDK 25, with Hibernate 5.6 kept. `main` and the `step*` tags stay on Grails 7.2.4; this branch exists to show what the upgrade touches. Everything passes: 76 unit tests (one pending, see below) and 41 integration tests, browser and HTTP tests included.
 
-## Running it
+What changed to get here, in order of how much it matters:
 
-Requires JDK 21 and Grails 7.2.4; `sdk env` selects both via [SDKMAN](https://sdkman.io). Docker is needed only for the browser tests.
+1. **Unconstrained properties are nullable by default in Grails 8.** Every earlier Grails applied an implicit `nullable: false`; 8 adopts JPA and Bean Validation semantics, so a `Task` with no name and no quest validated *and saved*, and `schemaExport` produced nullable columns. `grails.gorm.default.nullable: false` in `application.yml` restores the old rule application-wide. The alternative is `nullable: false` on every property that must be present.
+2. `RestfulController.index` now puts a `Long` count in the model where 7 used an `Integer`; the compiled JSON view's `model` block rejected it. `index.gson` declares `Number questCount`.
+3. The Forge 8 starter replaced the layout (SiteMesh 3 with a navbar and dark mode), the welcome assets, the i18n bundles and the config files; those were adopted wholesale and our three messages, URL mapping and config keys re-applied.
+4. `build.gradle` follows the Forge 8 starter: `grails-sitemesh3` instead of `grails-layout`, explicit Spring Boot starters, `testcontainers-spock`, `compileJava.options.release = 21`, no `console` configuration. The Grails 7 configuration-cache workaround is gone; Grails 8 no longer needs it.
+5. `DomainUnitTest` in RC2 does not honor the configured nullable default, so "a task needs a quest" in `TaskSpec` is `@PendingFeature` with a reference to the 8.0.0 fix.
+
+What did not change: every domain class, controller, service, view and test other than the two lines above. The `groovy-datetime` dependency is still needed on Groovy 5.
+
+
+Requires JDK 25 and Grails 8.0.0-RC2; `sdk env` selects both via [SDKMAN](https://sdkman.io). Docker is needed only for the browser tests.
 
 ```bash
 grails run-app          # http://localhost:8080 (or ./grailsw run-app without installing Grails)

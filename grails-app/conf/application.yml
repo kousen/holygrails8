@@ -3,42 +3,6 @@ info:
     name: '@info.app.name@'
     version: '@info.app.version@'
     grailsVersion: '@info.app.grailsVersion@'
-grails:
-  codegen:
-    defaultPackage: com.kousenit
-  databinding:
-    convertEmptyStringsToNull: false
-  profile: web
-  mime:
-    types:
-      all: '*/*'
-      atom: application/atom+xml
-      css: text/css
-      csv: text/csv
-      form: application/x-www-form-urlencoded
-      html:
-      - text/html
-      - application/xhtml+xml
-      js: text/javascript
-      json:
-      - application/json
-      - text/json
-      multipartForm: multipart/form-data
-      pdf: application/pdf
-      rss: application/rss+xml
-      text: text/plain
-      hal:
-      - application/hal+json
-      - application/hal+xml
-      xml:
-      - text/xml
-      - application/xml
-  views:
-    gsp:
-      encoding: UTF-8
-      htmlcodec: xml
-      codecs:
-        scriptlet: html
 dataSource:
   driverClassName: org.h2.Driver
   username: sa
@@ -65,3 +29,20 @@ hibernate:
     queries: false
     use_second_level_cache: false
     use_query_cache: false
+grails:
+  views:
+    gsp:
+      encoding: UTF-8
+      htmlcodec: xml
+      codecs:
+        scriptlet: html
+  codegen:
+    defaultPackage: com.kousenit
+  gorm:
+    default:
+      # Grails 8 makes unconstrained properties nullable by default (JPA semantics).
+      # This application was written for Grails 7's required-by-default rule.
+      nullable: false
+  databinding:
+    convertEmptyStringsToNull: false
+  profile: web
