@@ -95,7 +95,7 @@ A complete Grails 8 application, built in stages, with a lab guide
 
 **Take it home**
 
-- `github.com/kousen/holygrails7`
+- `github.com/kousen/holygrails8`
 - `labs.md`: twelve labs, one tag each
 - `git checkout step5-model` to join at any point
 - `main` is the finished app
@@ -179,7 +179,7 @@ Commit it before you touch it. Every later diff is yours.
 # `grails run-app`
 
 ```
-       holygrails7: 0.1 | JVM: Eclipse Adoptium 25.0.4 | Grails: 8.0.0
+       holygrails8: 0.1 | JVM: Eclipse Adoptium 25.0.4 | Grails: 8.0.0
     Groovy: 5.1.3 | Spring Boot: 4.1.1 | Spring: 7.0.9 | Tomcat: 11.0.24.0
 Grails application running at http://localhost:8080 in environment: development
 ```
@@ -1009,7 +1009,7 @@ Two days of training in 2012; ten minutes of prompting now. The Grails 8 release
 
 # Resources
 
-- This talk: `github.com/kousen/holygrails7`, start with `labs.md`
+- This talk: `github.com/kousen/holygrails8`, start with `labs.md`
 - Grails 8.0.0 guide: https://grails.apache.org/docs/8.0.0/guide/
   - *What's new in Grails 8*: `introduction.html#whatsNew`
   - *Upgrading from Grails 7 to Grails 8*: `upgrading.html#upgrading80x`

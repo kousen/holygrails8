@@ -1,11 +1,11 @@
 {
-  "name": "holygrails7-slides",
+  "name": "holygrails8-slides",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "slidev slides.md --open",
     "build": "slidev build slides.md",
-    "export": "slidev export slides.md --output holygrails7-slides.pdf"
+    "export": "slidev export slides.md --output holygrails8-slides.pdf"
   },
   "overrides": {
     "dompurify": "^3.4.12"

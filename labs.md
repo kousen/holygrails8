@@ -62,8 +62,8 @@ Grails applications start life in **Grails Forge**, the web-based project genera
 1. Create a directory for the project and change into it:
 
    ```bash
-   mkdir holygrails7
-   cd holygrails7
+   mkdir holygrails8
+   cd holygrails8
    ```
 
 2. Download the generated application from the Forge API. The URL names the application type (`web`), the fully qualified application name, and the options we want:
@@ -151,7 +151,7 @@ Grails applications start life in **Grails Forge**, the web-based project genera
 2. Watch the console. Grails prints a banner with the versions it is running on:
 
    ```
-          holygrails7: 0.1 | JVM: Eclipse Adoptium 25.0.4 | Grails: 8.0.0
+          holygrails8: 0.1 | JVM: Eclipse Adoptium 25.0.4 | Grails: 8.0.0
        Groovy: 5.1.3 | Spring Boot: 4.1.1 | Spring: 7.0.9 | Tomcat: 11.0.24.0
    Grails application running at http://localhost:8080 in environment: development
    ```
