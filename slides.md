@@ -524,16 +524,16 @@ class: text-center
 # The Bridge of Death
 
 <div class="flex justify-center my-4">
-  <Youtube id="0D7hFHfLEyk" :width="640" :height="360" />
+  <Youtube id="0D7hFHfLEyk?start=139" :width="640" :height="360" />
 </div>
 
 <div class="text-sm opacity-70">
 "What... is your favourite colour?" "Blue. No, yel—" <em>aaaargh</em><br>
-<a href="https://www.youtube.com/watch?v=0D7hFHfLEyk" target="_blank">youtube.com/watch?v=0D7hFHfLEyk</a>
+<a href="https://www.youtube.com/watch?v=0D7hFHfLEyk&t=139s" target="_blank">youtube.com/watch?v=0D7hFHfLEyk</a>
 </div>
 
 <!--
-CLIP, 30 seconds: scrub to Lancelot ("Ask me the questions, bridgekeeper") and stop when Sir Robin goes over the edge. The validator on the next slide is the payoff, so this is the one clip to keep if time is short.
+CLIP, 21 seconds: the player opens at 2:19 on Galahad's "Stop!". Stop at 2:40, after "Blue. No, yel—" and the scream. The validator on the next slide is the payoff, so this is the one clip to keep if time is short. Lancelot's turn starts at 1:19 if you want the full minute.
 Needs wifi. The PDF shows the link instead of the player. Alternate upload if this one disappears: dPOyOM7wxlE.
 -->
 
@@ -819,16 +819,16 @@ class: text-center
 # 'Tis but a scratch
 
 <div class="flex justify-center my-4">
-  <Youtube id="KlYrn2bXsc4" :width="640" :height="360" />
+  <Youtube id="KlYrn2bXsc4?start=88" :width="640" :height="360" />
 </div>
 
 <div class="text-sm opacity-70">
 Four changes to port this app to 8. Everything else: a flesh wound.<br>
-<a href="https://www.youtube.com/watch?v=KlYrn2bXsc4" target="_blank">youtube.com/watch?v=KlYrn2bXsc4</a>
+<a href="https://www.youtube.com/watch?v=KlYrn2bXsc4&t=88s" target="_blank">youtube.com/watch?v=KlYrn2bXsc4</a>
 </div>
 
 <!--
-CLIP, 20 seconds: from "None shall pass" to "'Tis but a scratch". Official Monty Python channel upload.
+CLIP, 22 seconds: the player opens at 1:28, just before "'Tis but a scratch". Stop at 1:50, after "Come on, you pansy." "None shall pass" is at 0:41 but there are 22 seconds of fight music before the title line. Official Monty Python channel upload.
 First clip to drop under time pressure: the next slide stands on its own.
 -->
 
@@ -997,16 +997,16 @@ class: text-center
 # The Rabbit of Caerbannog
 
 <div class="flex justify-center my-4">
-  <Youtube id="XcxKIJTb3Hg" :width="640" :height="360" />
+  <Youtube id="XcxKIJTb3Hg?start=58" :width="640" :height="360" />
 </div>
 
 <div class="text-sm opacity-70">
 "That's no ordinary rabbit." Two things that bit me this week, next slide.<br>
-<a href="https://www.youtube.com/watch?v=XcxKIJTb3Hg" target="_blank">youtube.com/watch?v=XcxKIJTb3Hg</a>
+<a href="https://www.youtube.com/watch?v=XcxKIJTb3Hg&t=58s" target="_blank">youtube.com/watch?v=XcxKIJTb3Hg</a>
 </div>
 
 <!--
-CLIP, 20 seconds: Tim's warning through the first charge ("Run away!"), which also sets up the closing slide.
+CLIP, 28 seconds: the player opens at 0:58 on "What's he do, nibble your bum?". Stop at 1:26, after "I warned you, but did you listen to me?". Tim's full warning starts at 0:37; "Run away!" is at 1:56, so letting it run to the closing-slide line costs a full minute.
 Alternate: the Holy Hand Grenade, xOrgLj9lOwk, if the point is the fix rather than the bite. Second clip to drop under time pressure.
 -->
 
@@ -1060,16 +1060,16 @@ class: text-center
 # A mandate from the masses
 
 <div class="flex justify-center my-4">
-  <Youtube id="44S0sa6gWMM" :width="640" :height="360" />
+  <Youtube id="44S0sa6gWMM?start=58" :width="640" :height="360" />
 </div>
 
 <div class="text-sm opacity-70">
 "Strange women lying in ponds distributing swords is no basis for a system of government."<br>
-<a href="https://www.youtube.com/watch?v=44S0sa6gWMM" target="_blank">youtube.com/watch?v=44S0sa6gWMM</a>
+<a href="https://www.youtube.com/watch?v=44S0sa6gWMM&t=58s" target="_blank">youtube.com/watch?v=44S0sa6gWMM</a>
 </div>
 
 <!--
-CLIP, 30 seconds: from "Well, I didn't vote for you" to "farcical aquatic ceremony". BritBox upload.
+CLIP, 36 seconds: the player opens at 0:58 on "Well, I didn't vote for you". Stop at 1:34, after "farcical aquatic ceremony". BritBox upload.
 The bridge into the three issues: at an Apache conference, supreme executive power really does derive from a mandate from the masses. Say that, then next slide.
 -->
 
