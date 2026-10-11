@@ -22,7 +22,7 @@ Also an "aspirational" talk. The abstract as written is a full-day workshop;
 in 40 minutes it needs to be cut to three beats. Skip the controller/view layer
 entirely, or wave at scaffolding once and move on.
 
-## Grails 7 facts (verified 5 Oct 2026)
+## Grails 7 facts (verified 5 Oct 2026; superseded by the 11 Oct note at the end)
 
 - Grails 7.0.0 shipped 28 October 2025 — the first stable release after
   graduating to an ASF Top-Level Project.
@@ -139,3 +139,31 @@ entirely, or wave at scaffolding once and move on.
   by default (`grails.gorm.default.nullable: false` restores); RestfulController
   index count is Long; Forge 8 starter swaps layout/assets/i18n/config. Demo
   moment: `git checkout holygrails8`, same tests, JDK 25.
+
+## Grails 8.0.0 released (11 Oct 2026, the day before the talk)
+
+- grails.apache.org lists 8.0.0 as current; Forge `latest.grails.org` now
+  serves 8.0.0 by default (Groovy 5.1.3, Spring Boot 4.1.1, Spring 7.0.9,
+  Gradle 9.8.0, Spock 2.4-groovy-5.0, Hibernate 5.6.15 still the default,
+  Tomcat 11). So anyone running the Lab 0 curl today gets a Grails 8 app.
+- **main is now Grails 8.0.0, JDK 25 (Temurin 25.0.4), Gradle 9.8.** The
+  `holygrails8` RC2 branch was merged, RC2 bumped to 8.0.0, the 8.0.0 Forge
+  starter's welcome page and i18n bundles adopted (the filter table changed
+  between RC2 and GA), `htmlcodec: xml` dropped (now the default), the JSON
+  view declares `Long questCount`, and the `@PendingFeature` on TaskSpec is
+  gone because 8.0.0 honours `grails.gorm.default.nullable` in DomainUnitTest
+  (#16466). 76 unit + 41 integration green, with the Gradle configuration
+  cache on; `console` and `schemaExport` tasks still exist; the welcome page
+  sends the new security headers.
+- **Tags stay on 7.2.4.** Re-cutting twelve tags on an 8 base was judged too
+  risky the day before the talk; labs.md and README say the tags carry 7.2.4
+  build files and identical application code. Candidate follow-up.
+- Docs: labs.md is now "Grails 8 Labs" (JDK 25, Grails 8.0.0, Lab 9 rewritten
+  as "What's New in Grails 8 (and 7)" with the 7→8 checklist and the port);
+  slides subtitle "A Grails 8 Tutorial", "Grails 8 at a glance" table, beat
+  three opens with nullable-by-default, the four-change port, "also new in 8",
+  the 7→8 checklist, then the existing 7 slides for people on 5/6. The
+  "Grails 8 is next" slide is gone. Programme still says "Grails 7 Tutorial":
+  opening line.
+- Still true from the 7 era: groovy-datetime needed, Apple silicon Geb fix,
+  setup()/@Rollback ordering, where-closure-in-expect quirk.

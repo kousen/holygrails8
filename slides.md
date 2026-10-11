@@ -6,7 +6,7 @@ highlighter: shiki
 lineNumbers: false
 info: |
   ## The Quest for the Holy Grails
-  A Grails 7 Tutorial, by Kenneth Kousen
+  A Grails 8 Tutorial, by Kenneth Kousen
   Community Over Code, Glasgow, 12 October 2026
 drawings:
   persist: false
@@ -21,7 +21,7 @@ slidev:
 
 <div class="pt-12">
   <span class="text-xl opacity-75">
-    A Grails 7 Tutorial
+    A Grails 8 Tutorial
   </span>
 </div>
 
@@ -34,7 +34,8 @@ slidev:
 </div>
 
 <!--
-40 minutes. Three beats: build the domain, one service one test, what changed in 7.
+40 minutes. Three beats: build the domain, one service one test, what changed in 8 (and 7).
+The programme says "Grails 7 Tutorial". Grails 8.0.0 shipped yesterday morning; the app and the labs moved to it the same day. Open with that.
 Everything shown is in the repo, tagged per stage. Live-code only what is marked LIVE in the notes.
 -->
 
@@ -78,7 +79,7 @@ https://learning.oreilly.com/library/view/claude-code-up/0642572388782/
 
 # The Quest
 
-A complete Grails 7 application, built in stages, with a lab guide
+A complete Grails 8 application, built in stages, with a lab guide
 
 <div class="grid grid-cols-2 gap-8 pt-4">
 <div>
@@ -87,7 +88,7 @@ A complete Grails 7 application, built in stages, with a lab guide
 
 1. Build the domain
 2. One service, one test
-3. What changed in Grails 7
+3. What changed in 8, and in 7
 
 </div>
 <div>
@@ -127,27 +128,27 @@ The castles are the filming locations. Doune Castle was Camelot. It is an hour f
 layout: section
 ---
 
-# Grails 7 at a glance
+# Grails 8 at a glance
 
 ---
 
-# The first ASF release
+# Grails 8.0.0 shipped yesterday
 
-Grails 7.0.0 shipped 28 October 2025, the first release as an Apache top-level project
+7.0.0 was the first Apache release, 28 October 2025; 8.0.0 is the second major in a year
 
-| | Grails 6 | Grails 7.2.4 |
+| | Grails 7.2.4 | Grails 8.0.0 |
 |---|---|---|
-| Java | 11+ | **17+** |
-| Groovy | 3.0 | **4.0.33** |
-| Spring Boot | 2.7 | **3.5.16** |
-| Spring Framework | 5.3 | **6.2.19** |
-| Servlet API | `javax.*` | **`jakarta.*`** |
-| Gradle | 7.6 | **8.14.5** |
-
-Group id for everything: `org.apache.grails`, versioned by one BOM.
+| Java | 17+ | **21+**, 25 works |
+| Groovy | 4.0.33 | **5.1.3** |
+| Spring Boot / Framework | 3.5.16 / 6.2.19 | **4.1.1 / 7.0.9** |
+| Jackson · Tomcat · Servlet | 2 · 10.1 · 6.0 | **3 · 11 · 6.1** |
+| Hibernate | 5.6.15 | 5.6.15, or **7** from Forge |
+| Spock · Gradle | 2.3 · 8.14.5 | **2.4 · 9.8.0** |
 
 <!--
-Hibernate did NOT move: still 5.6.15, the jakarta build. That surprises people. Hibernate 7 is Grails 8.
+Group id for everything, since 7: org.apache.grails, versioned by one BOM.
+Hibernate did NOT move by default: 5.6.15 is still what Forge generates. Hibernate 7 is a Forge option with its own BOM.
+This app was built on 7.2.4 and ported to 8.0.0 yesterday. Everything in the labs is 8 now; beat three says what the port touched.
 -->
 
 ---
@@ -158,7 +159,7 @@ The generator moved to `grails.apache.org/start`, and it has an API
 
 ```bash
 curl -L -o app.zip \
-  "https://latest.grails.org/create/web/com.kousenit.holygrails?jdkVersion=JDK_21&gorm=HIBERNATE&test=SPOCK&features=testcontainers"
+  "https://latest.grails.org/create/web/com.kousenit.holygrails?jdkVersion=JDK_25&gorm=HIBERNATE&test=SPOCK&features=testcontainers"
 ```
 
 What you get:
@@ -178,12 +179,12 @@ Commit it before you touch it. Every later diff is yours.
 # `grails run-app`
 
 ```
-       holygrails7: 0.1 | JVM: Eclipse Adoptium 21.0.8 | Grails: 7.2.4
-            Groovy: 4.0.33 | Spring Boot: 3.5.16 | Spring: 6.2.19
+       holygrails7: 0.1 | JVM: Eclipse Adoptium 25.0.4 | Grails: 8.0.0
+    Groovy: 5.1.3 | Spring Boot: 4.1.1 | Spring: 7.0.9 | Tomcat: 11.0.24.0
 Grails application running at http://localhost:8080 in environment: development
 ```
 
-- The banner is new in 7; the versions in it are 7.1
+- The banner is 7; the versions in it are 7.1; the colour and the container are 8
 - `run-app` and `./gradlew bootRun` are the same embedded Tomcat
 - The `grails` command delegates to Gradle now. Watch for `CONFIGURE SUCCESSFUL`
 
@@ -331,9 +332,9 @@ endDate - startDate: see next slide.
 
 ---
 
-# Groovy 4 is modular
+# Groovy 5 is modular (so was 4)
 
-`endDate - startDate` does not compile in a fresh Grails 7 app
+`endDate - startDate` does not compile in a fresh Grails 8 app
 
 <div class="grid grid-cols-2 gap-8">
 <div>
@@ -352,7 +353,7 @@ Grails ships:
 Grails does not ship:
 
 - `groovy-datetime`
-- (`groovy-console` arrives via the `console` configuration)
+- (`groovy-console` rides along with `grails console`, which 8 serves from a `-cli` jar)
 
 </div>
 </div>
@@ -464,7 +465,7 @@ overdue.count()
 ```
 
 <!--
-LIVE: run QuestQueriesSpec, show two finders. The console still exists in 7, but a test is a better tutorial medium.
+LIVE: run QuestQueriesSpec, show two finders. The console still exists in 8, but a test is a better tutorial medium.
 -->
 
 ---
@@ -766,7 +767,83 @@ Leaflet from a **webjar** (`org.webjars.npm:leaflet:1.9.4`, served at `/webjars/
 layout: section
 ---
 
-# Beat three: what changed in 7
+# Beat three: what changed in 8, and in 7
+
+---
+
+# Nullable by default
+
+Every Grails before 8 applied an implicit `nullable: false` to an unconstrained property. Grails 8 follows JPA, Spring Data and Bean Validation instead: **unconstrained means nullable**.
+
+Port this app as-is and a `Task` with no name and no quest validates, saves, and `schemaExport` drops the `NOT NULL`s. `TaskSpec` from Lab 3 goes red.
+
+```yaml
+grails:
+  gorm:
+    default:
+      nullable: false     # the Grails 7 rule, application-wide
+```
+
+Or say `nullable: false` where you mean it, which is what a new app should do. Unit tests honour the setting (RC2 did not; fixed for 8.0.0).
+
+<!--
+This is THE thing to tell anyone upgrading. Command objects are unaffected. Review your schema before a migration tool runs.
+-->
+
+---
+
+# Porting this app: four changes
+
+1. **`grails.gorm.default.nullable: false`**, the slide before this one
+2. **`RestfulController.index` supplies a `Long` count** now, not an `Integer`; the compiled JSON view declares `Long questCount`
+3. **Adopt the Forge 8 starter**: SiteMesh 3 layout with a navbar and dark mode, a welcome page that lists the filter chain, no `logback-spring.xml`, no `grails.mime.types` block
+4. **`build.gradle` from the starter**: `grails-sitemesh3` for `grails-layout`, `testcontainers-spock`, `release = 21`, no `console` configuration (commands moved to `-cli` jars the plugin provisions), and no configuration-cache workaround
+
+Every domain class, controller, service, view and test: unchanged. 76 unit, 41 integration, green on JDK 25.
+
+<!--
+The Spring dependency-management plugin is gone too: the BOM is a Gradle platform now; gradle.properties overrides still work.
+Port by diffing against a fresh Forge 8 app. That is also step 3 of the upgrade checklist in Lab 9.
+-->
+
+---
+
+# Also new in 8
+
+- **Security headers on every response**: `nosniff`, `SAMEORIGIN`, `Referrer-Policy`; HSTS and CSP available. `grails.security.headers.*`
+- **Static compilation for everything**: `grails { compileStatic { controllers = true; services = true; tagLibs = true } }`
+- **`"/$controller"(resources: '*')`** maps every controller as a REST resource
+- **GORM locking**: `book.refresh(lock: true)`, `Book.lock(id, refresh: true)`, any `LockModeType`
+- **Plugin beans beat Boot's `@ConditionalOnMissingBean`**; `beanRegistrar()` replaces `doWithSpring`
+- **AOT**: Spring AOT and native images; on JDK 25 `grails { aotCache { enabled = true } }`
+- **Agent skills in the release**: `grails-developer` and `grails-8-upgrade`, via SkillsJars
+
+<!--
+James's talk at 17:00 covers 8 properly. Pick two of these and hand off.
+-->
+
+---
+
+# Upgrading from 7 to 8
+
+1. `runtimeOnly "org.springframework.boot:spring-boot-properties-migrator"`; boot once; read the warnings. Or give your agent the `grails-8-upgrade` skill
+2. JDK 21+; `./gradlew wrapper --gradle-version 9.8.0`
+3. Fresh Forge 8 app, same features; diff `build.gradle`, `gradle.properties`, `application.yml`
+4. Spring Boot 4 renames: `-starter-web` → `-starter-webmvc`, `-aop` → `-aspectj`; Jackson 3 is `tools.jackson.*`
+5. Decide what nullable means, before any schema migration
+6. Groovy 5: static closures assigning static fields; `ConfigObject` probing; map getters
+7. `grails-app/commands` import `org.apache.grails.core.cli.*`; old plugins: `grails { legacyCommandSupport = true }`
+8. Every plugin needs an 8 build. Run the tests; then in a container.
+
+---
+layout: section
+---
+
+# On 5 or 6? What changed in 7
+
+<!--
+Get to 7 first; the guide calls the path incremental. The 7 move is the one that touches code.
+-->
 
 ---
 
@@ -791,7 +868,7 @@ Everything the Grails team publishes moved to `org.apache.grails`, with one BOM
 # The build
 
 - **Micronaut is out** of the default stack. Grails 4 to 6 ran it as the parent context; `grails-micronaut` is now opt-in.
-- **Gradle 8.14.5**: parallel, lazy, cacheable. Gradle 9 is **not** supported by the 7.x plugins.
+- **Gradle 8.14.5** in 7, parallel, lazy, cacheable; Gradle 9 needs the 8 plugins (8 is on 9.8).
 - Groovy 4's invokedynamic is off for Grails compiles; `grails { indy = true }` turns it back on.
 - Test dependencies are off the production classpath.
 - Reproducible builds: set `SOURCE_DATE_EPOCH`.
@@ -802,7 +879,7 @@ Everything the Grails team publishes moved to `org.apache.grails`, with one BOM
 
 - **The classic CLI and `grailsw` are back**, and they delegate to Gradle.
 - **Forge** generates projects; the CLI scaffolds inside them.
-- `console` and `schema-export` survive. `schemaExport` is also a Gradle task.
+- `console` and `schema-export` survive, in 8 too. `schemaExport` is also a Gradle task.
 - `stop-app` uses a PID file written by `run-app`, not JMX.
 - New in 7.1: `create-scaffold-controller`, `create-scaffold-service`, `generate-scaffold-all`.
 ---
@@ -874,8 +951,8 @@ layout: section
 
 # Two things that will bite you
 
-**Grails 7 + Java 25 + IntelliJ does not work.**
-Grails 7.2 is pinned to Gradle 8.14, which officially supports Java 24 at most. The build runs on 25 from the command line; IntelliJ enforces Gradle's table and refuses to sync. Use 21. Grails 8 is on Gradle 9.8.
+**`RestfulController` counts are `Long` now.**
+A compiled JSON view that declared `Integer questCount` on 7 fails at runtime on 8. Declare `Long`. The upgrade guide does not mention it.
 
 <div class="pt-4" />
 
@@ -896,8 +973,8 @@ containerBrowser = 'firefox'
 
 <div class="pt-4" />
 
-**The Gradle configuration cache** in `~/.gradle/gradle.properties` breaks `buildProperties`.
-A project property cannot override it; mark the task `notCompatibleWithConfigurationCache` in `build.gradle`.
+**The Forge starter changed under you.**
+SiteMesh 3 layout, new welcome page, regenerated i18n, no `logback-spring.xml`, no MIME types block. Port by diffing against a fresh Forge 8 app, not by hand. (And the 7.2.4 configuration-cache workaround is gone; 8 is clean.)
 ---
 
 # Three things worth knowing
@@ -908,33 +985,9 @@ A project property cannot override it; mark the task `notCompatibleWithConfigura
 
 <div class="pt-6 opacity-80">
 
-And three things that turned out to be rumours: there is no SBOM feature, the console is not dead, and Hibernate did not move.
+And three things that turned out to be rumours: there is no SBOM feature, the console is not dead (it moved to a `-cli` jar), and Hibernate did not move by default.
 
 </div>
-
----
-
-# Grails 8 is next
-
-Tagged 4 October 2026, pre-release as of this talk
-
-| | Grails 7.2 | Grails 8.0 |
-|---|---|---|
-| Java | 17 to 24 | **21** to **25** |
-| Groovy | 4.0 | **5.1** |
-| Spring Boot / Framework | 3.5 / 6.2 | **4.1 / 7.0** (Jackson 3, Tomcat 11) |
-| Hibernate | 5.6 | 5.6, or **7** via Forge |
-| Spock | 2.3 | **2.4** |
-| Gradle | 8.14 | **9.8** |
-
-**Unconstrained properties become nullable by default**, as in JPA. `grails.gorm.default.nullable: false` restores the Grails 7 rule; otherwise a `Task` with no name saves and your schema loses its `NOT NULL`s.
-
-Hibernate dropped its Criteria API in 6. GORM kept yours, re-based on JPA Criteria. This app runs on 8.0.0-RC2 and JDK 25: branch `holygrails8`.
-
-<!--
-The upgrade from 7 is designed to be incremental: get to 7 first.
-James's talk at 17:00 covers 8 properly. One line and hand off.
--->
 
 ---
 
@@ -943,12 +996,12 @@ James's talk at 17:00 covers 8 properly. One line and hand off.
 Three issues I would file after this week, and this is the conference to say so
 
 1. **grails-geb**: document the Docker VMM crash, accept the Chromium image as a Chrome substitute, or default to a multi-arch image on arm64 hosts
-2. **The upgrade guide**: two headings have their version numbers swapped, and several Grails 7 sections sit under the Grails 5 to 6 chapter
-3. **Forge**: the JDK 25 option generates a build IntelliJ will not open
+2. **The upgrade guide**: `RestfulController.index` now supplies a `Long`; a compiled JSON view that declared `Integer` fails at runtime, and the guide does not say so
+3. **One they already fixed**: RC2's `DomainUnitTest` ignored `grails.gorm.default.nullable`; 8.0.0 honours it (#16466), a week after RC2
 
 <div class="pt-6">
 
-Two days of training in 2012; ten minutes of prompting now. The Grails 8 release notes credit an AI account among the contributors. The maintainers work the way this morning's talk described.
+Two days of training in 2012; ten minutes of prompting now. The Grails 8 release notes credit an AI account among the contributors, and the release ships an agent skill for this exact upgrade. The maintainers work the way this morning's talk described.
 
 </div>
 
@@ -957,9 +1010,9 @@ Two days of training in 2012; ten minutes of prompting now. The Grails 8 release
 # Resources
 
 - This talk: `github.com/kousen/holygrails7`, start with `labs.md`
-- Grails 7.2.4 guide: https://grails.apache.org/docs/7.2.4/guide/
-  - *What's new*: `introduction.html#whatsNew`
-  - *Upgrading*: `upgrading.html`
+- Grails 8.0.0 guide: https://grails.apache.org/docs/8.0.0/guide/
+  - *What's new in Grails 8*: `introduction.html#whatsNew`
+  - *Upgrading from Grails 7 to Grails 8*: `upgrading.html#upgrading80x`
 - Grails Forge: https://grails.apache.org/start
 - `RENAME.md` and the rename script: `github.com/apache/grails-core`
 - Geb plugin README: `grails-core/grails-geb/README.md`

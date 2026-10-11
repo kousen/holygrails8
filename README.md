@@ -1,6 +1,6 @@
 # The Quest for the Holy Grails
 
-A complete [Apache Grails 7](https://grails.apache.org) application built in stages around a Monty Python quest domain: knights, castles, quests, tasks, and the enemies in the way. It accompanies the talk *The Quest for the Holy Grails: A Grails 7 Tutorial* at Community Over Code, Glasgow, October 2026.
+A complete [Apache Grails 8](https://grails.apache.org) application built in stages around a Monty Python quest domain: knights, castles, quests, tasks, and the enemies in the way. It accompanies the talk *The Quest for the Holy Grails: A Grails Tutorial* at Community Over Code, Glasgow, October 2026.
 
 **Start with [labs.md](labs.md).** It walks through every stage, from generating the project to a JSON API, and each stage ends with a git tag:
 
@@ -15,28 +15,28 @@ A complete [Apache Grails 7](https://grails.apache.org) application built in sta
 | `step6-scaffold` | `@Scaffold` replaces 535 lines of generated code |
 | `step7-geocoder` | A service calling Open-Meteo, tested with a Spy |
 | `step8-map` | A Leaflet map of the castles |
-| `step9-grails7` | What's new in Grails 7; a containerized Geb test |
+| `step9-grails7` | What's new in Grails 8 and 7; a containerized Geb test |
 | `step10-enemies` | Inheritance in GORM |
 | `step11-json` | JSON views and `HttpClientSupport` |
 
 `main` is the finished application. To see a stage, `git checkout <tag>`.
 
-## This branch: Grails 8.0.0-RC2
+> The labs were written against Grails 7.2.4 and the tags were cut on it. Grails 8.0.0 shipped on 11 October 2026, the day before the talk, and `main` now runs on it. Every domain class, controller, service, view and test at each tag is the same code you write on 8; only the build files, the welcome page and one configuration key differ, and the list below says which.
 
-This is the `holygrails8` branch: the same application on **Grails 8.0.0-RC2**, Groovy 5.1, Spring Boot 4.1, Gradle 9.8 and JDK 25, with Hibernate 5.6 kept. `main` and the `step*` tags stay on Grails 7.2.4; this branch exists to show what the upgrade touches. Everything passes: 76 unit tests (one pending, see below) and 41 integration tests, browser and HTTP tests included.
+## Grails 7.2.4 to 8.0.0: what the move touched
 
-What changed to get here, in order of how much it matters:
+The application runs on **Grails 8.0.0**, Groovy 5.1, Spring Boot 4.1, Gradle 9.8 and JDK 25, with Hibernate 5.6 kept (the Forge default). All 76 unit tests and 41 integration tests pass, browser and HTTP tests included. In order of how much it matters:
 
 1. **Unconstrained properties are nullable by default in Grails 8.** Every earlier Grails applied an implicit `nullable: false`; 8 adopts JPA and Bean Validation semantics, so a `Task` with no name and no quest validated *and saved*, and `schemaExport` produced nullable columns. `grails.gorm.default.nullable: false` in `application.yml` restores the old rule application-wide. The alternative is `nullable: false` on every property that must be present.
 2. `RestfulController.index` now puts a `Long` count in the model where 7 used an `Integer`; the compiled JSON view's `model` block rejected it. `index.gson` declares `Number questCount`.
-3. The Forge 8 starter replaced the layout (SiteMesh 3 with a navbar and dark mode), the welcome assets, the i18n bundles and the config files; those were adopted wholesale and our three messages, URL mapping and config keys re-applied.
-4. `build.gradle` follows the Forge 8 starter: `grails-sitemesh3` instead of `grails-layout`, explicit Spring Boot starters, `testcontainers-spock`, `compileJava.options.release = 21`, no `console` configuration. The Grails 7 configuration-cache workaround is gone; Grails 8 no longer needs it.
-5. `DomainUnitTest` in RC2 does not honor the configured nullable default, so "a task needs a quest" in `TaskSpec` is `@PendingFeature` with a reference to the 8.0.0 fix.
+3. The Forge 8 starter replaced the layout (SiteMesh 3 with a navbar and dark mode), the welcome page, the i18n bundles and the config files; those were adopted wholesale and our three messages, the favicon URL mapping and our config keys re-applied.
+4. `build.gradle` follows the Forge 8 starter: `grails-sitemesh3` instead of `grails-layout`, explicit Spring Boot starters, `testcontainers-spock`, `compileJava.options.release = 21`, no `console` configuration (the CLI commands moved to companion `-cli` artifacts that the Gradle plugin provisions itself). The Grails 7 configuration-cache workaround is gone; Grails 8 no longer needs it.
 
-What did not change: every domain class, controller, service, view and test other than the two lines above. The `groovy-datetime` dependency is still needed on Groovy 5.
+What did not change: every domain class, controller, service, view and test other than the two lines above. The `groovy-datetime` dependency is still needed on Groovy 5. The `holygrails8` branch is where the port was done on 8.0.0-RC2; it has been merged and is kept only for the record.
 
+## Running it
 
-Requires JDK 25 and Grails 8.0.0-RC2; `sdk env` selects both via [SDKMAN](https://sdkman.io). Docker is needed only for the browser tests.
+Requires JDK 25 (Grails 8 needs at least 21) and Grails 8.0.0; `sdk env` selects both via [SDKMAN](https://sdkman.io). Docker is needed only for the browser tests.
 
 ```bash
 grails run-app          # http://localhost:8080 (or ./grailsw run-app without installing Grails)
