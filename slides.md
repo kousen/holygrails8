@@ -226,6 +226,7 @@ class Quest {
 
 <!--
 LIVE: type this class. Then generate-all. ~4 minutes to the running list page.
+IDE gag: in the toolbar above Quest, QuestController resolves but QuestService says "Nothing here". The plugin does not recognise a data service declared as an interface; Castle's @Scaffold service (a class) resolves fine. Issue 4 on the closing list; the Grails devs in the room can carry it to JetBrains.
 -->
 
 ---
@@ -1077,11 +1078,12 @@ The bridge into the three issues: at an Apache conference, supreme executive pow
 
 # Community over code
 
-Three issues I would file after this week, and this is the conference to say so
+Four issues I would file after this week, and this is the conference to say so
 
 1. **grails-geb**: document the Docker VMM crash, accept the Chromium image as a Chrome substitute, or default to a multi-arch image on arm64 hosts
 2. **The upgrade guide**: `RestfulController.index` now supplies a `Long`; a compiled JSON view that declared `Integer` fails at runtime, and the guide does not say so
 3. **One they already fixed**: RC2's `DomainUnitTest` ignored `grails.gorm.default.nullable`; 8.0.0 honours it (#16466), a week after RC2
+4. **The IntelliJ Grails plugin**: the domain-class toolbar finds a service that is a class (`@Scaffold CastleService`) but says "Nothing here" for a GORM data service declared as an interface (`@Service QuestService`)
 
 <div class="pt-6">
 
