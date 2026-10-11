@@ -7,10 +7,13 @@ class Knight {
     Quest quest
     Castle castle
 
-    String toString() { "$title $name" }
+    /** A blank title from a form means no title at all. There are some who call him... Tim. */
+    void setTitle(String title) { this.title = title?.trim() ?: null }
+
+    String toString() { [title, name].findAll().join(' ') }
 
     static constraints = {
-        title inList: ['Sir', 'Lord', 'Lady', 'King', 'Queen']
+        title nullable: true, inList: ['Sir', 'Lord', 'Lady', 'King', 'Queen']
         name blank: false
         favouriteColour nullable: true, validator: { String colour, Knight knight ->
             // The Bridgekeeper asks every knight. Only Galahad is allowed not to know.

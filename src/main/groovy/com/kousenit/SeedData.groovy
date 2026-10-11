@@ -44,6 +44,8 @@ class SeedData {
                 latitude: 51.0023d, longitude: 0.5436d)
                 .addToKnights(title: 'Lord', name: 'of Swamp Castle', favouriteColour: 'Huge tracts of land')
                 .save(failOnError: true)
+        // No title, no castle. There are some who call him... Tim.
+        new Knight(title: null, name: 'Tim the Enchanter', favouriteColour: 'Fire').save(failOnError: true)
         [camelot, aaargh, swamp]
     }
 

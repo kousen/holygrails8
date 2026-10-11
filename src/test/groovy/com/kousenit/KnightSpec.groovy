@@ -31,6 +31,20 @@ class KnightSpec extends Specification implements DomainUnitTest<Knight> {
         name << ['Lancelot the Brave', 'Robin the Not-Quite-So-Brave-as-Sir-Lancelot', 'Bedevere the Wise']
     }
 
+    void "Tim the Enchanter has no title, and does not print one"() {
+        given:
+        Knight tim = new Knight(title: null, name: 'Tim the Enchanter', favouriteColour: 'Fire')
+
+        expect:
+        tim.validate()
+        tim.toString() == 'Tim the Enchanter'
+    }
+
+    void "a blank title from a form means no title"() {
+        expect:
+        new Knight(title: '  ', name: 'Tim the Enchanter', favouriteColour: 'Fire').title == null
+    }
+
     void "Galahad does not have to know his favourite colour"() {
         expect:
         new Knight(name: 'Galahad the Pure').validate()

@@ -550,7 +550,7 @@ class Knight {
     String favouriteColour
 
     static constraints = {
-        title inList: ['Sir', 'Lord', 'Lady', 'King', 'Queen']
+        title nullable: true, inList: ['Sir', 'Lord', 'Lady', 'King', 'Queen']
         name blank: false
         favouriteColour nullable: true, validator: { String colour, Knight knight ->
             // The Bridgekeeper asks every knight. Only Galahad is allowed not to know.
