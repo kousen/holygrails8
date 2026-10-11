@@ -34,6 +34,13 @@ repositories {
 }
 
 dependencies {
+    constraints {
+        // Spring Boot 4.1.1 (via the Grails 8.0.0 BOM) pins Tomcat 11.0.24; 11.0.25 fixed four
+        // critical CVEs (65637, 65905, 65182, 68525). Drop this once the BOM moves past 11.0.25.
+        implementation 'org.apache.tomcat.embed:tomcat-embed-core:11.0.26'
+        implementation 'org.apache.tomcat.embed:tomcat-embed-websocket:11.0.26'
+        implementation 'org.apache.tomcat.embed:tomcat-embed-el:11.0.26'
+    }
     profile "org.apache.grails.profiles:web"
     developmentOnly "org.springframework.boot:spring-boot-devtools" // Spring Boot DevTools may cause performance slowdowns or compatibility issues on larger applications
     testAndDevelopmentOnly "org.webjars.npm:bootstrap"

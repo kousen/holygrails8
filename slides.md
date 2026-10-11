@@ -1093,6 +1093,10 @@ Four issues I would file after this week, and this is the conference to say so
 3. **One they already fixed**: RC2's `DomainUnitTest` ignored `grails.gorm.default.nullable`; 8.0.0 honours it (#16466), a week after RC2
 4. **The IntelliJ Grails plugin**: the domain-class toolbar finds a service that is a class (`@Scaffold CastleService`) but says "Nothing here" for a GORM data service declared as an interface (`@Service QuestService`)
 
+<!--
+Also worth saying, not on the slide: IntelliJ's dependency checker flags the grails-bom line with 16 vulnerabilities. The four critical ones are Apache Tomcat (CVE-2026-65637, 65905, 65182, 68525), all fixed in Tomcat 11.0.25 on 26 Aug 2026. Grails 8.0.0 inherits Spring Boot 4.1.1's pin of 11.0.24, one patch short. build.gradle constrains the three tomcat-embed artifacts to 11.0.26; every test passes. The rest are probably Hibernate 5.6.15, which is why Hibernate 7 is a Forge option.
+-->
+
 <div class="pt-6">
 
 Two days of training in 2012; ten minutes of prompting now. The Grails 8 release notes credit an AI account among the contributors, and the release ships an agent skill for this exact upgrade. The maintainers work the way this morning's talk described.
