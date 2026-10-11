@@ -838,7 +838,7 @@ Four changes to port this app to 8. Everything else: a flesh wound.<br>
 
 <!--
 CLIP, 22 seconds: the player opens at 1:28, just before "'Tis but a scratch". Stop at 1:50, after "Come on, you pansy." "None shall pass" is at 0:41 but there are 22 seconds of fight music before the title line. Official Monty Python channel upload.
-First clip to drop under time pressure: the next slide stands on its own.
+Plan: skip this one live, for time and for the squeamish; it stays in the deck and the PDF for anyone who wants it later. The next slide stands on its own.
 -->
 
 ---
