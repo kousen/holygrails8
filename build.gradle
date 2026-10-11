@@ -82,6 +82,9 @@ compileJava.options.release = 21
 
 tasks.withType(Test).configureEach {
     useJUnitPlatform()
+    // Mockito attaches the Byte Buddy agent at runtime; JDK 21+ warns about that and about CDS once the
+    // bootstrap classpath is appended. Same two flags as the Spring course builds.
+    jvmArgs '-XX:+EnableDynamicAgentLoading', '-Xshare:off'
 }
 
 assets {
