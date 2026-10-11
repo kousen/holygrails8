@@ -8,7 +8,8 @@
     "export": "slidev export slides.md --output holygrails8-slides.pdf"
   },
   "overrides": {
-    "dompurify": "^3.4.12"
+    "dompurify": "^3.4.12",
+    "katex": "^0.18.10"
   },
   "devDependencies": {
     "@slidev/cli": "^52.18.0",
