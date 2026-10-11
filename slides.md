@@ -966,7 +966,8 @@ Mattias has the Geb deep dive. Hand off.
 # Also new: data and configuration
 
 - **`@Scaffold`** on controllers and services
-- **Audit annotations** (7.1): `@CreatedDate`, `@LastModifiedDate`, `@CreatedBy`, `@LastModifiedBy`. `@AutoTimestamp` is deprecated for 8.
+- **Audit annotations** (7.1): `@CreatedDate`, `@LastModifiedDate`, `@CreatedBy`, `@LastModifiedBy`
+- **`@AutoTimestamp` is gone in 8.** Deprecated in 7.1, removed in 8.0.0; `@CreatedDate` and `@LastModifiedDate` replace it. The `dateCreated` / `lastUpdated` convention is unchanged.
 - **External configuration** built in: the former external-config plugin, no plugin needed
 - **JSON dates** are ISO-8601 everywhere, `java.util.Date` included. Clients that parsed epoch millis need updating.
 - **The banner**, with dependency versions from 7.1
