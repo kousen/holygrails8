@@ -280,6 +280,10 @@ def populateValidParams(params) {
 
 Three red tests after every `generate-all`, so you cannot forget them.
 
+<!--
+Small one for the team: IntelliJ flags populateValidParams as "can be static", and it is right. The helper takes params as an argument rather than reading the spec's params property, so it never touches instance state. Either make the template's helper static or have it use the property. Cosmetic, but it is the first thing the IDE says about every generated controller spec.
+-->
+
 <div class="pt-4">
 
 Also: a blank name reports **cannot be null**, not blank. Data binding trims and converts `""` to `null` before validation.
