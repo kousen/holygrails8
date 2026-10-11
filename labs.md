@@ -36,7 +36,7 @@ git checkout step1-quest
 
 To return to the latest state, check out `main`. Tag names appear at the end of each lab under **Checkpoint**.
 
-The tags were cut while these labs were on Grails 7.2.4, and they still build on it: each tag carries the 7.2.4 build files and a Gradle 8.14 wrapper, which runs on JDK 21. The application code at every stage is identical on Grails 8, so a tag remains the right thing to diff your work against; `main` is the Grails 8 build.
+The tags were cut while these labs were on Grails 7.2.4, and they still build on it: each tag carries the 7.2.4 build files and a Gradle 8.14 wrapper, which runs on JDK 21, not 25. Each tag's `.sdkmanrc` names that JDK, so run `sdk env` after checking out a tag, and `sdk env` again on `main`. The application code at every stage is identical on Grails 8, so a tag remains the right thing to diff your work against; `main` is the Grails 8 build.
 
 ## Table of Contents
 
@@ -853,7 +853,7 @@ Grails runs `grails-app/init/com/kousenit/BootStrap.groovy` once at startup. We 
                    .addToTasks(name: 'Get taunted by the French', completed: true, priority: 4)
                    .addToTasks(name: 'Weigh a witch against a duck', priority: 3)
                    .addToTasks(name: 'Build a giant wooden rabbit', priority: 2, endDate: today + 14)
-                   .addToTasks(name: 'Lobbeth thou thy Holy Hand Grenade of Antioch', priority: 5, startDate: today + 2, endDate: today + 2)
+                   .addToTasks(name: 'Lobbest thou thy Holy Hand Grenade of Antioch', priority: 5, startDate: today + 2, endDate: today + 2)
                    .save(failOnError: true)
        }
    }
@@ -998,7 +998,7 @@ class QuestQueriesSpec extends Specification {
 
         then:
         urgent.count() == 2
-        urgent.list(sort: 'name')*.name == ['Answer the Bridgekeeper', 'Lobbeth thou thy Holy Hand Grenade of Antioch']
+        urgent.list(sort: 'name')*.name == ['Answer the Bridgekeeper', 'Lobbest thou thy Holy Hand Grenade of Antioch']
     }
 
     void "where queries can be composed before they run"() {

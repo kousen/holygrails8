@@ -87,7 +87,7 @@ class QuestQueriesSpec extends Specification {
 
         then:
         urgent.count() == 2
-        urgent.list(sort: 'name')*.name == ['Answer the Bridgekeeper', 'Lobbeth thou thy Holy Hand Grenade of Antioch']
+        urgent.list(sort: 'name')*.name == ['Answer the Bridgekeeper', 'Lobbest thou thy Holy Hand Grenade of Antioch']
     }
 
     void "where queries can be composed before they run"() {

@@ -19,7 +19,7 @@ class SeedData {
                 .addToTasks(name: 'Get taunted by the French', completed: true, priority: 4)
                 .addToTasks(name: 'Weigh a witch against a duck', priority: 3)
                 .addToTasks(name: 'Build a giant wooden rabbit', priority: 2, endDate: today + 14)
-                .addToTasks(name: 'Lobbeth thou thy Holy Hand Grenade of Antioch', priority: 5, startDate: today + 2, endDate: today + 2)
+                .addToTasks(name: 'Lobbest thou thy Holy Hand Grenade of Antioch', priority: 5, startDate: today + 2, endDate: today + 2)
                 .save(failOnError: true)
     }
 
