@@ -394,6 +394,10 @@ class TaskSpec extends Specification implements DomainUnitTest<Task> {
 - `@Shared` for the fixture nobody mutates; a plain field is rebuilt for every feature
 - The error codes (`blank`, `nullable`, `range.toobig`, `validator.invalid`) are your message keys
 
+<!--
+If the test output shows "A Java agent has been loaded dynamically" and the CDS "Sharing is only supported" line: JDK 21+ warning about Mockito attaching Byte Buddy, not Grails. build.gradle sets jvmArgs '-XX:+EnableDynamicAgentLoading', '-Xshare:off' on every Test task; the IDE runs through Gradle so it inherits them. Worth a sentence if anyone's console shows it.
+-->
+
 ---
 
 # One test, five cases
