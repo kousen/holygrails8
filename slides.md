@@ -331,7 +331,7 @@ class Task {
 ```
 
 <!--
-LIVE: the validator. belongsTo = owning side, cascade delete. getDuration is derived: no transients needed in 7.
+LIVE: the validator. belongsTo = owning side, cascade delete. getDuration is derived: a lone getter has not needed a transients entry since Grails 2.0; only fields and full get/set pairs do.
 endDate - startDate: see next slide.
 -->
 
