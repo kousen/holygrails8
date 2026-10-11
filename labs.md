@@ -853,7 +853,7 @@ Grails runs `grails-app/init/com/kousenit/BootStrap.groovy` once at startup. We 
                    .addToTasks(name: 'Get taunted by the French', completed: true, priority: 4)
                    .addToTasks(name: 'Weigh a witch against a duck', priority: 3)
                    .addToTasks(name: 'Build a giant wooden rabbit', priority: 2, endDate: today + 14)
-                   .addToTasks(name: 'Lobbeth the Holy Hand Grenade of Antioch', priority: 5, startDate: today + 2, endDate: today + 2)
+                   .addToTasks(name: 'Lobbeth thou thy Holy Hand Grenade of Antioch', priority: 5, startDate: today + 2, endDate: today + 2)
                    .save(failOnError: true)
        }
    }
@@ -998,7 +998,7 @@ class QuestQueriesSpec extends Specification {
 
         then:
         urgent.count() == 2
-        urgent.list(sort: 'name')*.name == ['Answer the Bridgekeeper', 'Lobbeth the Holy Hand Grenade of Antioch']
+        urgent.list(sort: 'name')*.name == ['Answer the Bridgekeeper', 'Lobbeth thou thy Holy Hand Grenade of Antioch']
     }
 
     void "where queries can be composed before they run"() {

@@ -423,7 +423,7 @@ static Quest seekTheGrail() {
         .addToTasks(name: 'Bring out your dead', completed: true, priority: 5)
         .addToTasks(name: 'Find a shrubbery for the Knights Who Say Ni', priority: 2, endDate: today + 7)
         .addToTasks(name: 'Weigh a witch against a duck', priority: 3)
-        .addToTasks(name: 'Lobbeth the Holy Hand Grenade of Antioch', priority: 5, startDate: today + 2)
+        .addToTasks(name: 'Lobbeth thou thy Holy Hand Grenade of Antioch', priority: 5, startDate: today + 2)
         .save(failOnError: true)
 }
 ```
