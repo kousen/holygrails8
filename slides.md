@@ -1118,3 +1118,7 @@ Questions?
 <div class="pt-2 opacity-70">
 "Run away! Run away!"
 </div>
+
+<div class="abs-br m-4 text-xs opacity-50">
+  Ken Kousen and Paul King, running away · image: Nano Banana
+</div>
