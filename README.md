@@ -55,6 +55,11 @@ npm run dev      # present at http://localhost:3030
 npm run export   # holygrails8-slides.pdf
 ```
 
+No setup needed to just read it:
+
+- **Web version** (GitHub Pages): **<https://kousen.github.io/holygrails8/>** via [`deploy-slides-pages.yml`](.github/workflows/deploy-slides-pages.yml)
+- **PDF**: [`holygrails8-slides.pdf`](https://github.com/kousen/holygrails8/releases/latest/download/holygrails8-slides.pdf) from the rolling `slides-latest` release
+
 The title photo of Doune Castle is by Bill Boaden, CC BY-SA 2.0, via geograph.org.uk and Wikimedia Commons.
 
 ## Licence
